@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เกมหมุนขวด</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spin Wheel Party Game</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🍻 เกมหมุนขวดวงเหล้า 🍻</h1>
-<p>เพิ่มชื่อเพื่อน แล้วกดหมุน!</p>
+<h1>🎯 เกมหมุนวงล้อ</h1>
+<p>เพิ่มชื่อ → หมุน → ลุ้นมินิเกม</p>
 
 <div class="players">
-    <input id="nameInput" type="text" placeholder="ชื่อผู้เล่น">
-    <button onclick="addPlayer()">เพิ่ม</button>
-    <button class="danger" onclick="clearAll()">ลบทั้งหมด</button>
-    <ul id="playerList"></ul>
+  <input id="nameInput" placeholder="ชื่อผู้เล่น">
+  <button onclick="addPlayer()">เพิ่ม</button>
+  <button class="danger" onclick="clearAll()">ลบทั้งหมด</button>
+  <ul id="playerList"></ul>
 </div>
 
 <div id="wheel-container">
-    <div id="pointer">▼</div>
-    <canvas id="wheel"></canvas>
+  <div id="pointer">▼</div>
+  <canvas id="wheel"></canvas>
 </div>
 
-<button id="spinBtn" onclick="spinWheel()" disabled>หมุนขวด!</button>
+<button id="spinBtn" onclick="spinWheel()" disabled>หมุนวงล้อ</button>
 
-<!-- popup -->
-<div id="overlay" onclick="hidePopup()"></div>
-<div id="popup">
-    <h2>🎯 โดนแล้ว!</h2>
-    <div id="winner"></div>
-    <div id="dare"></div>
-    <button onclick="hidePopup()">ปิด</button>
+<!-- Result Popup -->
+
+<div id="overlay" onclick="hideResult()"></div>
+<div id="resultPopup">
+  <h2>🎉 ได้แล้ว!</h2>
+  <div id="winner"></div>
+  <div id="resultText"></div>
+  <button onclick="hideResult()">ตกลง</button>
+</div>
+
+<!-- Minigame Popup -->
+<div id="minigameOverlay"></div>
+<div id="minigamePopup">
+  <h2>🃏 สุ่มมินิเกม</h2>
+  <p>เลือกไพ่ 1 ใบ</p>
+
+  <div class="card-grid" id="cardGrid"></div>
+
+  <div id="minigameResult"></div>
+  <button onclick="closeMinigame()">ปิด</button>
 </div>
 
 <script src="script.js"></script>
